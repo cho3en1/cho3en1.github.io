@@ -148,16 +148,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="JVM内存管理机制"><a href="#JVM内存管理机制" class="headerlink" title="JVM内存管理机制"></a>JVM内存管理机制</h1><h2 id="Java虚拟机主要内存区域"><a href="#Java虚拟机主要内存区域" class="headerlink" title="Java虚拟机主要内存区域"></a>Java虚拟机主要内存区域</h2><ol>
+        <h2 id="Java虚拟机主要内存区域"><a href="#Java虚拟机主要内存区域" class="headerlink" title="Java虚拟机主要内存区域"></a>Java虚拟机主要内存区域</h2><ol>
 <li>栈</li>
 <li>堆</li>
 <li>方法区</li>
 </ol>
-<p>如图：<br><img src="http://ohwxydzxm.bkt.clouddn.com/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BF%90%E8%A1%8C%E6%97%B6%E4%B8%BB%E8%A6%81%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E5%88%86%E5%B8%83%E5%9B%BE.png" alt="Java虚拟机运行时主要内存区域分布图"><br>图片来源：</p>
+<p>如图：<br><img src="http://ohwxydzxm.bkt.clouddn.com/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BF%90%E8%A1%8C%E6%97%B6%E4%B8%BB%E8%A6%81%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E5%88%86%E5%B8%83%E5%9B%BE.png" alt="Java虚拟机运行时主要内存区域分布图"></p>
 <h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>Java虚拟机栈用于存放Java执行时的方法，每个方法被执行的时候都会同时创建一个栈帧，用于存储局部变量表等信息。</p>
 <h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>Java堆是Java虚拟机管理中最大的一块区域，目的是用于存放对象实例。Java堆物理上可以不连续，逻辑上连续即可。</p>
 <h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p>方法区虽然有个别名叫做非堆，但实际上它是堆的一个逻辑部分，所以在图中我把它放在了堆里面较为妥当。方法区中还有个重要的部分是运行时常量池，用于存放类加载后的静态常量，符号符号引用和常量池。</p>
+<hr>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29947420&auto=0&height=66"></iframe>
+
       
 
       
