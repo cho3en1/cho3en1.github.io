@@ -130,26 +130,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-123" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-JVM内存管理机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/09/123/">123</a>
+      <a class="article-title" href="/2016/12/09/JVM内存管理机制/">JVM内存管理机制</a>
     </h1>
   
 
-        <a href="/2016/12/09/123/" class="archive-article-date">
-  	<time datetime="2016-12-09T08:32:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-09</time>
+        <a href="/2016/12/09/JVM内存管理机制/" class="archive-article-date">
+  	<time datetime="2016-12-09T10:57:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-09</time>
 </a>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>按实际的那时间考虑</p>
-
+        <h1 id="JVM内存管理机制"><a href="#JVM内存管理机制" class="headerlink" title="JVM内存管理机制"></a>JVM内存管理机制</h1><h2 id="Java虚拟机主要内存区域"><a href="#Java虚拟机主要内存区域" class="headerlink" title="Java虚拟机主要内存区域"></a>Java虚拟机主要内存区域</h2><ol>
+<li>栈</li>
+<li>堆</li>
+<li>方法区</li>
+</ol>
+<p>如图：<br><img src="http://ohwxydzxm.bkt.clouddn.com/Java%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BF%90%E8%A1%8C%E6%97%B6%E4%B8%BB%E8%A6%81%E5%86%85%E5%AD%98%E5%8C%BA%E5%9F%9F%E5%88%86%E5%B8%83%E5%9B%BE.png" alt="Java虚拟机运行时主要内存区域分布图"><br>图片来源：</p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>Java虚拟机栈用于存放Java执行时的方法，每个方法被执行的时候都会同时创建一个栈帧，用于存储局部变量表等信息。</p>
+<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>Java堆是Java虚拟机管理中最大的一块区域，目的是用于存放对象实例。Java堆物理上可以不连续，逻辑上连续即可。</p>
+<h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><p>方法区虽然有个别名叫做非堆，但实际上它是堆的一个逻辑部分，所以在图中我把它放在了堆里面较为妥当。方法区中还有个重要的部分是运行时常量池，用于存放类加载后的静态常量，符号符号引用和常量池。</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=29947420&auto=0&height=66"></iframe>
       
 
       
@@ -157,11 +165,16 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/09/123/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/12/09/JVM内存管理机制/">展开全文 >></a>
         </p>
       
 
@@ -229,6 +242,10 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">JVM</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
