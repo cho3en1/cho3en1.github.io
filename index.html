@@ -130,18 +130,86 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-JVM内存管理机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-JVM(Ⅱ)-GC前的对象死亡判定" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/09/JVM内存管理机制/">JVM内存管理机制</a>
+      <a class="article-title" href="/2016/12/09/JVM(Ⅱ)-GC前的对象死亡判定/">GC前的对象死亡判定</a>
     </h1>
   
 
-        <a href="/2016/12/09/JVM内存管理机制/" class="archive-article-date">
+        <a href="/2016/12/09/JVM(Ⅱ)-GC前的对象死亡判定/" class="archive-article-date">
+  	<time datetime="2016-12-09T13:17:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-09</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="判定对象不可用的方法"><a href="#判定对象不可用的方法" class="headerlink" title="判定对象不可用的方法"></a>判定对象不可用的方法</h2><ol>
+<li>引用计数算法</li>
+<li>根搜索算法</li>
+</ol>
+<h2 id="引用计数算法"><a href="#引用计数算法" class="headerlink" title="引用计数算法"></a>引用计数算法</h2><p>对象每新增一个引用，该对象的计数器值加1。<br>对象每减少一个引用，该对象的计数器值减1。<br>任何时候计数器值为0，该对象不可用。</p>
+<p>缺点：无法解决对象死循环引用情况。</p>
+<h2 id="根搜索算法"><a href="#根搜索算法" class="headerlink" title="根搜索算法"></a>根搜索算法</h2><p>一个对象没有任何引用链能到达GC Roots即为不可用。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>两种判定对象不可用的方法都涉及到引用。引用又分为四种：</p>
+<ol>
+<li>强引用：只要强引用还存在，垃圾回收器永远都不会对其引用对象回收。</li>
+<li>软引用：还有用，但不是必要的引用。内存溢出前将其放入可回收队列，进行二次回收。</li>
+<li>弱引用：只能存活到下次垃圾回收前。</li>
+<li>虚引用：仅仅起到接受系统回收对象的通知。</li>
+</ol>
+<h2 id="判定不可用对象死亡的条件"><a href="#判定不可用对象死亡的条件" class="headerlink" title="判定不可用对象死亡的条件"></a>判定不可用对象死亡的条件</h2><p><strong>第一次标记：</strong>不可用对象覆盖了finalize()方法且没被虚拟机调用过，则虚拟机触发finalize()方法，由于是低优先级线程，所以并不一定执行finalize()，仅仅只是触发。<br><strong>第二次标记：</strong>弱第一次标记中的对象执行了finalize()并且新增了引用，则该对象移出“即将回收”的集合。反之对象死亡回收。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/09/JVM(Ⅱ)-GC前的对象死亡判定/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-JVM(Ⅰ)-内存管理机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/09/JVM(Ⅰ)-内存管理机制/">JVM内存管理机制</a>
+    </h1>
+  
+
+        <a href="/2016/12/09/JVM(Ⅰ)-内存管理机制/" class="archive-article-date">
   	<time datetime="2016-12-09T10:57:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-09</time>
 </a>
       </header>
@@ -176,7 +244,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/09/JVM内存管理机制/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/12/09/JVM(Ⅰ)-内存管理机制/">展开全文 >></a>
         </p>
       
 
