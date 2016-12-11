@@ -6,14 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2016 | cho3en1</title>
+  <title>JVM(Ⅲ)-垃圾回收算法 | cho3en1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="cho3en1">
-<meta property="og:url" content="http://yoursite.com/archives/2016/index.html">
+  <meta name="description" content="标记-清除算法对即将回收的对象进行标记，等到下次垃圾回收时一并回收。缺点：产生大量空间碎片，可能导致下次需要连续内存空间的对象初始化时申请内存失败。
+标记-整理算法基于标记-清除算法，多加一个整理功能。对于即将回收的对象进行标记，并且把存活的对象移到一端，等到下次垃圾回收时将另一端的内存全部回收。
+复制算法将内存分为等量的两块，每一次只使用其中一块。当这一块的内存用完了就把还存活着的对象全部复制到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM(Ⅲ)-垃圾回收算法">
+<meta property="og:url" content="http://yoursite.com/2016/12/11/JVM(Ⅲ)-垃圾回收算法/index.html">
 <meta property="og:site_name" content="cho3en1">
+<meta property="og:description" content="标记-清除算法对即将回收的对象进行标记，等到下次垃圾回收时一并回收。缺点：产生大量空间碎片，可能导致下次需要连续内存空间的对象初始化时申请内存失败。
+标记-整理算法基于标记-清除算法，多加一个整理功能。对于即将回收的对象进行标记，并且把存活的对象移到一端，等到下次垃圾回收时将另一端的内存全部回收。
+复制算法将内存分为等量的两块，每一次只使用其中一块。当这一块的内存用完了就把还存活着的对象全部复制到">
+<meta property="og:updated_time" content="2016-12-11T14:44:37.403Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cho3en1">
+<meta name="twitter:title" content="JVM(Ⅲ)-垃圾回收算法">
+<meta name="twitter:description" content="标记-清除算法对即将回收的对象进行标记，等到下次垃圾回收时一并回收。缺点：产生大量空间碎片，可能导致下次需要连续内存空间的对象初始化时申请内存失败。
+标记-整理算法基于标记-清除算法，多加一个整理功能。对于即将回收的对象进行标记，并且把存活的对象移到一端，等到下次垃圾回收时将另一端的内存全部回收。
+复制算法将内存分为等量的两块，每一次只使用其中一块。当这一块的内存用完了就把还存活着的对象全部复制到">
   
     <link rel="alternative" href="/atom.xml" title="cho3en1" type="application/atom+xml">
   
@@ -128,118 +138,119 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-JVM(Ⅲ)-垃圾回收算法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      JVM(Ⅲ)-垃圾回收算法
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/11/JVM(Ⅲ)-垃圾回收算法/" class="archive-article-date">
+
+        <a href="/2016/12/11/JVM(Ⅲ)-垃圾回收算法/" class="archive-article-date">
   	<time datetime="2016-12-11T14:42:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-11</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/11/JVM(Ⅲ)-垃圾回收算法/">JVM(Ⅲ)-垃圾回收算法</a>
-    </h1>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="标记-清除算法"><a href="#标记-清除算法" class="headerlink" title="标记-清除算法"></a>标记-清除算法</h2><p>对即将回收的对象进行标记，等到下次垃圾回收时一并回收。<br>缺点：产生大量空间碎片，可能导致下次需要连续内存空间的对象初始化时申请内存失败。</p>
+<h2 id="标记-整理算法"><a href="#标记-整理算法" class="headerlink" title="标记-整理算法"></a>标记-整理算法</h2><p>基于标记-清除算法，多加一个整理功能。对于即将回收的对象进行标记，并且把存活的对象移到一端，等到下次垃圾回收时将另一端的内存全部回收。</p>
+<h2 id="复制算法"><a href="#复制算法" class="headerlink" title="复制算法"></a>复制算法</h2><p>将内存分为等量的两块，每一次只使用其中一块。当这一块的内存用完了就把还存活着的对象全部复制到另一块内存上，并清空刚使用的那一块的内存。</p>
+<h2 id="分代收集算法"><a href="#分代收集算法" class="headerlink" title="分代收集算法"></a>分代收集算法</h2><p>Java虚拟机将内存分为新生代和老年代来回收垃圾。</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/12/11/JVM(Ⅲ)-垃圾回收算法/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/09/JVM(Ⅱ)-GC前的对象死亡判定/" class="archive-article-date">
-  	<time datetime="2016-12-09T13:17:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/09/JVM(Ⅱ)-GC前的对象死亡判定/">JVM(Ⅱ)-GC前的对象死亡判定</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/12/09/JVM(Ⅰ)-内存管理机制/" class="archive-article-date">
-  	<time datetime="2016-12-09T10:57:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/09/JVM(Ⅰ)-内存管理机制/">JVM(Ⅰ)-内存管理机制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2016/12/09/JVM(Ⅱ)-GC前的对象死亡判定/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JVM(Ⅱ)-GC前的对象死亡判定</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
+</nav>
 
-    
+
+
+
+
+
+
 
 
           </div>
@@ -260,8 +271,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
