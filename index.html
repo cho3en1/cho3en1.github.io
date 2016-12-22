@@ -130,18 +130,82 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Java常用容器汇总及比较" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java多线程小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/22/Java常用容器汇总及比较/">Java常用容器汇总及比较</a>
+      <a class="article-title" href="/2016/12/23/Java多线程小结/">Java多线程小结</a>
     </h1>
   
 
-        <a href="/2016/12/22/Java常用容器汇总及比较/" class="archive-article-date">
+        <a href="/2016/12/23/Java多线程小结/" class="archive-article-date">
+  	<time datetime="2016-12-22T18:50:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-23</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Java线程生命周期状态机图"><a href="#Java线程生命周期状态机图" class="headerlink" title="Java线程生命周期状态机图"></a>Java线程生命周期状态机图</h2><p><img src="http://ohwxydzxm.bkt.clouddn.com/Java%E7%BA%BF%E7%A8%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%8A%B6%E6%80%81%E6%9C%BA%E5%9B%BE.png" alt=""></p>
+<h2 id="Java线程生命周期"><a href="#Java线程生命周期" class="headerlink" title="Java线程生命周期"></a>Java线程生命周期</h2><p><strong>新生状态：</strong> new线程即为新生状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Ⅰ：线程执行start()方法后，进入就绪状态</div></pre></td></tr></table></figure></p>
+<p><strong>就绪状态：</strong> 线程执行Start()方法后即为就绪状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Ⅰ：线程被CPU调度并且被分配到时间片后，进入运行状态执行run()方法</div></pre></td></tr></table></figure></p>
+<p><strong>运行状态：</strong> 线程获取到CPU分配的时间后即为运行状态。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Ⅰ：线程在CPU分配的时间片内未运行完，重新回到就绪状态</div><div class="line">Ⅱ：线程遭遇阻塞事件的发生（join yield sleep wait），进入阻塞状态</div><div class="line">Ⅲ：线程执行完毕，进入死亡状态</div></pre></td></tr></table></figure></p>
+<p><strong>阻塞状态：</strong> 线程在运行时遭遇阻塞事件的发生后即为阻塞状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Ⅰ：阻塞事件解除后，线程回到就绪状态</div></pre></td></tr></table></figure></p>
+<p><strong>死亡状态：</strong> 线程正常执行结束或外部干涉而执行结束后即为死亡状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Ⅰ：死亡状态的线程对象将被JVM执行垃圾回收</div></pre></td></tr></table></figure></p>
+<h2 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h2><p>Ⅰ：继承Thread重写run()方法<br>Ⅱ：实现Runnable接口重写run()方法</p>
+<h2 id="线程优先级"><a href="#线程优先级" class="headerlink" title="线程优先级"></a>线程优先级</h2><p>线程优先级只是概率，优先级越高的线程被CPU调度的概率越大，并不是绝对的先后顺序OK？<br>setPriority()方法设置线程优先级大小，范围1~10，默认值5</p>
+<h2 id="线程阻塞事件"><a href="#线程阻塞事件" class="headerlink" title="线程阻塞事件"></a>线程阻塞事件</h2><p>Ⅰ：线程合并 join()<br>Ⅱ：线程暂停 yield()<br>Ⅲ：线程睡眠 sleep()</p>
+<h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h2><p>多个线程访问同一对象资源时，为确保资源安全，需对该资源进行锁定synchronized<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Ⅰ：同步块</div><div class="line">synchronized(引用类型 | this | 类.class) &#123;&#125; </div><div class="line">Ⅱ：同步方法</div><div class="line">直接在方法上直接添加synchronized修饰</div></pre></td></tr></table></figure></p>
+<h2 id="线程死锁"><a href="#线程死锁" class="headerlink" title="线程死锁"></a>线程死锁</h2><p>线程同步粒度过小造成线程死锁<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">Object A;</div><div class="line">Object B;</div><div class="line"></div><div class="line">main() &#123;</div><div class="line">	Thread1 t1; </div><div class="line">	Thread2 t2;</div><div class="line">	t1.start();</div><div class="line">	t2.start();</div><div class="line">&#125;</div><div class="line"></div><div class="line">Thread1 &#123;</div><div class="line">	run() &#123;</div><div class="line">		method1();</div><div class="line">	&#125;</div><div class="line">	method1() &#123;</div><div class="line">		synchronized(A) &#123;</div><div class="line">			...</div><div class="line">			synchronized(B) &#123;...&#125;</div><div class="line">			...</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Thread2 &#123;</div><div class="line">	run() &#123;</div><div class="line">		method2();</div><div class="line">	&#125;</div><div class="line">	method2() &#123;</div><div class="line">		synchronized(B) &#123;</div><div class="line">			...</div><div class="line">			synchronized(A) &#123;...&#125;</div><div class="line">			...</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thread/">Thread</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/23/Java多线程小结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Java常用容器汇总及对比" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/22/Java常用容器汇总及对比/">Java常用容器汇总及对比</a>
+    </h1>
+  
+
+        <a href="/2016/12/22/Java常用容器汇总及对比/" class="archive-article-date">
   	<time datetime="2016-12-21T21:39:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-22</time>
 </a>
       </header>
@@ -171,7 +235,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/22/Java常用容器汇总及比较/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/12/22/Java常用容器汇总及对比/">展开全文 >></a>
         </p>
       
 
@@ -569,6 +633,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">Thread</a>
               </li>
              
               <li class="article-tag-list-item">
