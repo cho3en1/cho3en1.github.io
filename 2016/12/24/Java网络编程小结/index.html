@@ -6,32 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JVM(Ⅳ)-垃圾回收机制 | cho3en1</title>
+  <title>Java网络编程小结 | cho3en1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JVM垃圾回收区域堆内存分布图
-年轻代垃圾回收机制详情
-新创建的对象大部分分配在新生代Eden区上。
-当Eden区没有足够的空间的时候虚拟机发起一次MinorGC，通过复制算法将Eden区存活的对象复制到其中一块Survivor区S0，并清空Eden区。
-下一次Eden区满的时候虚拟机再发起一次MinorGC，通过复制算法将Eden区和S0区中存活的对象一并复制到另一块Survivor区S1，并清">
+  <meta name="description" content="TCP建立连接三次握手通信图SYN：标志位，同步标志。SYN置1：发起一个新的请求ACK：标志位，确认标志。ACK置1：确认序列号有效seq：序列号。指出该数据在发送端数据流中的位置ack：确认号。指出本机希望下一个接收的字节的序列号
+TCP三次握手过程Ⅰ：客户端发送一个同步数据包请求连接，初始序列号seq由客户端随机产生一个值xⅡ：服务器端接收到客户端的同步数据包，将对该客户端进行同步确认。服务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JVM(Ⅳ)-垃圾回收机制">
-<meta property="og:url" content="http://yoursite.com/2016/12/12/JVM(Ⅳ)-垃圾回收机制/index.html">
+<meta property="og:title" content="Java网络编程小结">
+<meta property="og:url" content="http://yoursite.com/2016/12/24/Java网络编程小结/index.html">
 <meta property="og:site_name" content="cho3en1">
-<meta property="og:description" content="JVM垃圾回收区域堆内存分布图
-年轻代垃圾回收机制详情
-新创建的对象大部分分配在新生代Eden区上。
-当Eden区没有足够的空间的时候虚拟机发起一次MinorGC，通过复制算法将Eden区存活的对象复制到其中一块Survivor区S0，并清空Eden区。
-下一次Eden区满的时候虚拟机再发起一次MinorGC，通过复制算法将Eden区和S0区中存活的对象一并复制到另一块Survivor区S1，并清">
-<meta property="og:image" content="http://ohwxydzxm.bkt.clouddn.com/JVM垃圾回收区域堆内存分布图.png">
-<meta property="og:updated_time" content="2016-12-11T16:09:46.601Z">
+<meta property="og:description" content="TCP建立连接三次握手通信图SYN：标志位，同步标志。SYN置1：发起一个新的请求ACK：标志位，确认标志。ACK置1：确认序列号有效seq：序列号。指出该数据在发送端数据流中的位置ack：确认号。指出本机希望下一个接收的字节的序列号
+TCP三次握手过程Ⅰ：客户端发送一个同步数据包请求连接，初始序列号seq由客户端随机产生一个值xⅡ：服务器端接收到客户端的同步数据包，将对该客户端进行同步确认。服务">
+<meta property="og:image" content="http://ohwxydzxm.bkt.clouddn.com/TCP%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E9%80%9A%E4%BF%A1%E5%9B%BE.png">
+<meta property="og:image" content="http://ohwxydzxm.bkt.clouddn.com/Socket%E9%80%9A%E4%BF%A1%E5%9B%BE.png">
+<meta property="og:updated_time" content="2016-12-23T18:35:16.391Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JVM(Ⅳ)-垃圾回收机制">
-<meta name="twitter:description" content="JVM垃圾回收区域堆内存分布图
-年轻代垃圾回收机制详情
-新创建的对象大部分分配在新生代Eden区上。
-当Eden区没有足够的空间的时候虚拟机发起一次MinorGC，通过复制算法将Eden区存活的对象复制到其中一块Survivor区S0，并清空Eden区。
-下一次Eden区满的时候虚拟机再发起一次MinorGC，通过复制算法将Eden区和S0区中存活的对象一并复制到另一块Survivor区S1，并清">
-<meta name="twitter:image" content="http://ohwxydzxm.bkt.clouddn.com/JVM垃圾回收区域堆内存分布图.png">
+<meta name="twitter:title" content="Java网络编程小结">
+<meta name="twitter:description" content="TCP建立连接三次握手通信图SYN：标志位，同步标志。SYN置1：发起一个新的请求ACK：标志位，确认标志。ACK置1：确认序列号有效seq：序列号。指出该数据在发送端数据流中的位置ack：确认号。指出本机希望下一个接收的字节的序列号
+TCP三次握手过程Ⅰ：客户端发送一个同步数据包请求连接，初始序列号seq由客户端随机产生一个值xⅡ：服务器端接收到客户端的同步数据包，将对该客户端进行同步确认。服务">
+<meta name="twitter:image" content="http://ohwxydzxm.bkt.clouddn.com/TCP%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E9%80%9A%E4%BF%A1%E5%9B%BE.png">
   
     <link rel="alternative" href="/atom.xml" title="cho3en1" type="application/atom+xml">
   
@@ -146,40 +138,27 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JVM(Ⅳ)-垃圾回收机制" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java网络编程小结" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JVM(Ⅳ)-垃圾回收机制
+      Java网络编程小结
     </h1>
   
 
-        <a href="/2016/12/12/JVM(Ⅳ)-垃圾回收机制/" class="archive-article-date">
-  	<time datetime="2016-12-11T16:07:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-12</time>
+        <a href="/2016/12/24/Java网络编程小结/" class="archive-article-date">
+  	<time datetime="2016-12-23T18:34:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-24</time>
 </a>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="JVM垃圾回收区域堆内存分布图"><a href="#JVM垃圾回收区域堆内存分布图" class="headerlink" title="JVM垃圾回收区域堆内存分布图"></a>JVM垃圾回收区域堆内存分布图</h2><p><img src="http://ohwxydzxm.bkt.clouddn.com/JVM垃圾回收区域堆内存分布图.png" alt=""></p>
-<h2 id="年轻代垃圾回收机制详情"><a href="#年轻代垃圾回收机制详情" class="headerlink" title="年轻代垃圾回收机制详情"></a>年轻代垃圾回收机制详情</h2><ol>
-<li>新创建的对象大部分分配在新生代Eden区上。</li>
-<li>当Eden区没有足够的空间的时候虚拟机发起一次MinorGC，通过复制算法将Eden区存活的对象复制到其中一块Survivor区S0，并清空Eden区。</li>
-<li>下一次Eden区满的时候虚拟机再发起一次MinorGC，通过复制算法将Eden区和S0区中存活的对象一并复制到另一块Survivor区S1，并清空Eden区和S0区。</li>
-<li>S0和S1功能调换，循环步骤3。</li>
-</ol>
-<h2 id="老年代垃圾回收机制详情"><a href="#老年代垃圾回收机制详情" class="headerlink" title="老年代垃圾回收机制详情"></a>老年代垃圾回收机制详情</h2><ol>
-<li>Survivor区的对象晋升老年代时，老年代区内存不够的时候虚拟机发起一次MajorGC，通过标记-整理算法回收垃圾。</li>
-<li>Survivor区内存不够用时，老年代为其无法容纳的对象进行担保，若担保失败，虚拟机发起一次MajorGC。<br>担保成功与否的判定取决于之前每一次晋升到老年代区的对象的平均大小。若某次MinorGC后存活的对象远远大于这个平均值，则担保必将失败。</li>
-</ol>
-<h2 id="对象进入老年代的判定"><a href="#对象进入老年代的判定" class="headerlink" title="对象进入老年代的判定"></a>对象进入老年代的判定</h2><ol>
-<li>刚创建的大对象直接进入老年代，大对象的判定由虚拟机的-XX：PretenureSizeThreshold参数确定。</li>
-<li>长期存活的对象将进入老年代，长期存活的判定由虚拟机的-XX：MaxTenuringThreshold参数确定，对象在Survivor区中每经历一次MinorGC，年龄就增长一岁。</li>
-<li>MinorGC后存活了大量的对象，这时Survivor区内存将不够用。这时Survivor区无法容纳的对象将直接进入老年代。</li>
-</ol>
+        <h2 id="TCP建立连接三次握手通信图"><a href="#TCP建立连接三次握手通信图" class="headerlink" title="TCP建立连接三次握手通信图"></a>TCP建立连接三次握手通信图</h2><p><img src="http://ohwxydzxm.bkt.clouddn.com/TCP%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E9%80%9A%E4%BF%A1%E5%9B%BE.png" alt=""><br>SYN：标志位，同步标志。SYN置1：发起一个新的请求<br>ACK：标志位，确认标志。ACK置1：确认序列号有效<br>seq：序列号。指出该数据在发送端数据流中的位置<br>ack：确认号。指出本机希望下一个接收的字节的序列号</p>
+<h2 id="TCP三次握手过程"><a href="#TCP三次握手过程" class="headerlink" title="TCP三次握手过程"></a>TCP三次握手过程</h2><p>Ⅰ：客户端发送一个同步数据包请求连接，初始序列号seq由客户端随机产生一个值x<br>Ⅱ：服务器端接收到客户端的同步数据包，将对该客户端进行同步确认。服务器端发送一个同步数据包给客户端，初始序列号seq由服务其端随机产生一个值y，确认号ack=x+1<br>Ⅲ：客户端接收到服务器端的同步数据包，对服务器端进行确认。确认号ack=y+1</p>
+<h2 id="Socket通信模型"><a href="#Socket通信模型" class="headerlink" title="Socket通信模型"></a>Socket通信模型</h2><p><img src="http://ohwxydzxm.bkt.clouddn.com/Socket%E9%80%9A%E4%BF%A1%E5%9B%BE.png" alt=""></p>
 
       
 
@@ -190,7 +169,7 @@
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP-Socket/">TCP Socket</a></li></ul>
 	</div>
 
       
@@ -243,7 +222,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/12/12/JVM(Ⅳ)-垃圾回收机制/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/12/24/Java网络编程小结/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -257,18 +236,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/12/13/JVM(Ⅴ)-类加载机制/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JVM(Ⅴ)-类加载机制
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/11/JVM(Ⅲ)-垃圾回收算法/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JVM(Ⅲ)-垃圾回收算法</div>
+    <a href="/2016/12/23/Java多线程小结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java多线程小结</div>
       <i class="icon-circle-right"></i>
     </a>
   

@@ -130,6 +130,62 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java网络编程小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/24/Java网络编程小结/">Java网络编程小结</a>
+    </h1>
+  
+
+        <a href="/2016/12/24/Java网络编程小结/" class="archive-article-date">
+  	<time datetime="2016-12-23T18:34:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-24</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="TCP建立连接三次握手通信图"><a href="#TCP建立连接三次握手通信图" class="headerlink" title="TCP建立连接三次握手通信图"></a>TCP建立连接三次握手通信图</h2><p><img src="http://ohwxydzxm.bkt.clouddn.com/TCP%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E9%80%9A%E4%BF%A1%E5%9B%BE.png" alt=""><br>SYN：标志位，同步标志。SYN置1：发起一个新的请求<br>ACK：标志位，确认标志。ACK置1：确认序列号有效<br>seq：序列号。指出该数据在发送端数据流中的位置<br>ack：确认号。指出本机希望下一个接收的字节的序列号</p>
+<h2 id="TCP三次握手过程"><a href="#TCP三次握手过程" class="headerlink" title="TCP三次握手过程"></a>TCP三次握手过程</h2><p>Ⅰ：客户端发送一个同步数据包请求连接，初始序列号seq由客户端随机产生一个值x<br>Ⅱ：服务器端接收到客户端的同步数据包，将对该客户端进行同步确认。服务器端发送一个同步数据包给客户端，初始序列号seq由服务其端随机产生一个值y，确认号ack=x+1<br>Ⅲ：客户端接收到服务器端的同步数据包，对服务器端进行确认。确认号ack=y+1</p>
+<h2 id="Socket通信模型"><a href="#Socket通信模型" class="headerlink" title="Socket通信模型"></a>Socket通信模型</h2><p><img src="http://ohwxydzxm.bkt.clouddn.com/Socket%E9%80%9A%E4%BF%A1%E5%9B%BE.png" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP-Socket/">TCP Socket</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/24/Java网络编程小结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Java多线程小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -642,6 +698,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">Set List Map</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">TCP Socket</a>
               </li>
             
             <div class="clearfix"></div>
