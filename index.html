@@ -130,6 +130,65 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-GOF设计模式(Ⅰ)-单例模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/25/GOF设计模式(Ⅰ)-单例模式/">GOF设计模式(Ⅰ)-单例模式</a>
+    </h1>
+  
+
+        <a href="/2016/12/25/GOF设计模式(Ⅰ)-单例模式/" class="archive-article-date">
+  	<time datetime="2016-12-24T19:50:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-25</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Ⅰ：私有静态属性<br>Ⅱ：私有构造器<br>Ⅲ：提供一个静态方法供外界获取静态实例</p>
+<h2 id="单例模式五种常见实现方式"><a href="#单例模式五种常见实现方式" class="headerlink" title="单例模式五种常见实现方式"></a>单例模式五种常见实现方式</h2><p>Ⅰ：<strong>饿汉式</strong>（线程安全，调用效率高，不能延时加载）<br>Ⅱ：<strong>懒汉式</strong>（线程安全，调用效率不高，能延时加载）<br>Ⅲ：<strong>枚举单例</strong>（线程安全，调用效率高，不能延时加载）<br>Ⅳ：<strong>静态内部类式</strong>（线程安全，调用效率高，能延时加载）<br>Ⅴ：<strong>双重检测锁式</strong>（JVM内存模型原因，偶尔会出问题，不建议使用）</p>
+<h2 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public class Singleton &#123;</div><div class="line">	private static Singleton instance = new Singleton();</div><div class="line">	private Singleton()&#123;&#125;</div><div class="line">	public static Singleton getInstance() &#123;</div><div class="line">		return intence;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public class Singleton &#123;</div><div class="line">	private static Singleton instance;</div><div class="line">	private Singleton();</div><div class="line">	public static synchronized Singleton getInstance &#123;</div><div class="line">		if(instance==null) &#123;</div><div class="line">			instance = new Singleton();</div><div class="line">		&#125;</div><div class="line">		return instance;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="枚举单例"><a href="#枚举单例" class="headerlink" title="枚举单例"></a>枚举单例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public enum Singleton &#123;</div><div class="line">	INSTANCE;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="静态内部类式"><a href="#静态内部类式" class="headerlink" title="静态内部类式"></a>静态内部类式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class Singleton &#123;</div><div class="line">	private static class SingletonHolder &#123;</div><div class="line">		private static Singleton instance = new Singleton();</div><div class="line">	&#125;</div><div class="line">	private Singleton() &#123;&#125;</div><div class="line">	public static Singleton getInstance() &#123;</div><div class="line">		return SingletonHolder.instance;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="双重检测锁式"><a href="#双重检测锁式" class="headerlink" title="双重检测锁式"></a>双重检测锁式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class Singleton &#123;</div><div class="line">	private static Singleton instance;</div><div class="line">	private Singleton() &#123;&#125;</div><div class="line">	public static Singleton getInstance() &#123;</div><div class="line">		if(instance==null) &#123;</div><div class="line">			synchronized(Sinleton.class) &#123;</div><div class="line">				if(instance==null) &#123;</div><div class="line">					instance = new Singletance();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		return instance;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/25/GOF设计模式(Ⅰ)-单例模式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Java网络编程小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -687,6 +746,10 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">设计模式</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">JVM</a>
