@@ -6,65 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JVM(Ⅴ)-类加载机制 | cho3en1</title>
+  <title>Archives: 2017 | cho3en1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="类生命周期图
-类加载过程
-加载
-链接
-初始化
-
-加载
-将二进制的类文件转化为虚拟机可执行的Java格式，并将类的相关静态数据存放到方法区。
-在堆上创建一个该类的类对象，作为接口访问该类的数据。
-
-链接
-验证：检查代码是否符合虚拟机要求。
-准备：为类的静态变量赋初值。
-解析：将常量池里面的符号引用替换为直接引用。
-
-初始化给类的静态变量初始化值。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="JVM(Ⅴ)-类加载机制">
-<meta property="og:url" content="http://yoursite.com/2016/12/13/JVM(Ⅴ)-类加载机制/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="cho3en1">
+<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
 <meta property="og:site_name" content="cho3en1">
-<meta property="og:description" content="类生命周期图
-类加载过程
-加载
-链接
-初始化
-
-加载
-将二进制的类文件转化为虚拟机可执行的Java格式，并将类的相关静态数据存放到方法区。
-在堆上创建一个该类的类对象，作为接口访问该类的数据。
-
-链接
-验证：检查代码是否符合虚拟机要求。
-准备：为类的静态变量赋初值。
-解析：将常量池里面的符号引用替换为直接引用。
-
-初始化给类的静态变量初始化值。">
-<meta property="og:image" content="http://ohwxydzxm.bkt.clouddn.com/类生命周期图.png">
-<meta property="og:updated_time" content="2016-12-13T08:02:41.289Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JVM(Ⅴ)-类加载机制">
-<meta name="twitter:description" content="类生命周期图
-类加载过程
-加载
-链接
-初始化
-
-加载
-将二进制的类文件转化为虚拟机可执行的Java格式，并将类的相关静态数据存放到方法区。
-在堆上创建一个该类的类对象，作为接口访问该类的数据。
-
-链接
-验证：检查代码是否符合虚拟机要求。
-准备：为类的静态变量赋初值。
-解析：将常量池里面的符号引用替换为直接引用。
-
-初始化给类的静态变量初始化值。">
-<meta name="twitter:image" content="http://ohwxydzxm.bkt.clouddn.com/类生命周期图.png">
+<meta name="twitter:title" content="cho3en1">
   
     <link rel="alternative" href="/atom.xml" title="cho3en1" type="application/atom+xml">
   
@@ -179,140 +128,54 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JVM(Ⅴ)-类加载机制" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      JVM(Ⅴ)-类加载机制
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/01/01/JDBC连接数据库/" class="archive-article-date">
+  	<time datetime="2016-12-31T17:30:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-01</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/01/01/JDBC连接数据库/">JDBC连接数据库</a>
     </h1>
   
 
-        <a href="/2016/12/13/JVM(Ⅴ)-类加载机制/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:01:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="类生命周期图"><a href="#类生命周期图" class="headerlink" title="类生命周期图"></a>类生命周期图</h2><p><img src="http://ohwxydzxm.bkt.clouddn.com/类生命周期图.png" alt=""></p>
-<h2 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h2><ol>
-<li>加载</li>
-<li>链接</li>
-<li>初始化</li>
-</ol>
-<h2 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h2><ol>
-<li>将二进制的类文件转化为虚拟机可执行的Java格式，并将类的相关静态数据存放到方法区。</li>
-<li>在堆上创建一个该类的类对象，作为接口访问该类的数据。</li>
-</ol>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><ol>
-<li>验证：检查代码是否符合虚拟机要求。</li>
-<li>准备：为类的静态变量赋初值。</li>
-<li>解析：将常量池里面的符号引用替换为直接引用。</li>
-</ol>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>给类的静态变量初始化值。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JDBC/">JDBC</a></li></ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/12/13/JVM(Ⅴ)-类加载机制/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2016/12/22/Java常见容器汇总/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java常见容器汇总
-        
-      </div>
-    </a>
   
   
-    <a href="/2016/12/12/JVM(Ⅳ)-垃圾回收机制/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JVM(Ⅳ)-垃圾回收机制</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-
-
-
-
-
+    
 
 
           </div>
@@ -333,8 +196,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

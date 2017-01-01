@@ -130,6 +130,59 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JDBC连接数据库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/01/JDBC连接数据库/">JDBC连接数据库</a>
+    </h1>
+  
+
+        <a href="/2017/01/01/JDBC连接数据库/" class="archive-article-date">
+  	<time datetime="2016-12-31T17:30:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-01</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</div><div class="line">String url = &quot;jdbc:mysql://localhost/database&quot;;</div><div class="line">String user = &quot;username&quot;;</div><div class="line">String password = &quot;password&quot;;</div><div class="line">Connection conn = DriverManager.getConnection(url, user, password);</div><div class="line">String sql = &quot;SELECT * FROM table WHERE username=? AND password=?&quot;;</div><div class="line">pstmt.setString(1, admin);</div><div class="line">pstmt.setString(2, 000000);</div><div class="line">PreparedStatement pstmt = conn.prepareStatement(sql);</div><div class="line">ResultSet rs = pstmt.executeQuery();</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JDBC/">JDBC</a></li></ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/01/JDBC连接数据库/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-GOF设计模式(Ⅰ)-单例模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -765,6 +818,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)">TCP Socket</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">JDBC</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,65 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JVM(Ⅴ)-类加载机制 | cho3en1</title>
+  <title>JDBC连接数据库 | cho3en1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="类生命周期图
-类加载过程
-加载
-链接
-初始化
-
-加载
-将二进制的类文件转化为虚拟机可执行的Java格式，并将类的相关静态数据存放到方法区。
-在堆上创建一个该类的类对象，作为接口访问该类的数据。
-
-链接
-验证：检查代码是否符合虚拟机要求。
-准备：为类的静态变量赋初值。
-解析：将常量池里面的符号引用替换为直接引用。
-
-初始化给类的静态变量初始化值。">
+  <meta name="description" content="12345678910Class.forName(&amp;quot;com.mysql.jdbc.Driver&amp;quot;);String url = &amp;quot;jdbc:mysql://localhost/database&amp;quot;;String user = &amp;quot;username&amp;quot;;String password = &amp;quot;password&amp;quot;;Connectio">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JVM(Ⅴ)-类加载机制">
-<meta property="og:url" content="http://yoursite.com/2016/12/13/JVM(Ⅴ)-类加载机制/index.html">
+<meta property="og:title" content="JDBC连接数据库">
+<meta property="og:url" content="http://yoursite.com/2017/01/01/JDBC连接数据库/index.html">
 <meta property="og:site_name" content="cho3en1">
-<meta property="og:description" content="类生命周期图
-类加载过程
-加载
-链接
-初始化
-
-加载
-将二进制的类文件转化为虚拟机可执行的Java格式，并将类的相关静态数据存放到方法区。
-在堆上创建一个该类的类对象，作为接口访问该类的数据。
-
-链接
-验证：检查代码是否符合虚拟机要求。
-准备：为类的静态变量赋初值。
-解析：将常量池里面的符号引用替换为直接引用。
-
-初始化给类的静态变量初始化值。">
-<meta property="og:image" content="http://ohwxydzxm.bkt.clouddn.com/类生命周期图.png">
-<meta property="og:updated_time" content="2016-12-13T08:02:41.289Z">
+<meta property="og:description" content="12345678910Class.forName(&amp;quot;com.mysql.jdbc.Driver&amp;quot;);String url = &amp;quot;jdbc:mysql://localhost/database&amp;quot;;String user = &amp;quot;username&amp;quot;;String password = &amp;quot;password&amp;quot;;Connectio">
+<meta property="og:updated_time" content="2016-12-31T17:33:15.039Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JVM(Ⅴ)-类加载机制">
-<meta name="twitter:description" content="类生命周期图
-类加载过程
-加载
-链接
-初始化
-
-加载
-将二进制的类文件转化为虚拟机可执行的Java格式，并将类的相关静态数据存放到方法区。
-在堆上创建一个该类的类对象，作为接口访问该类的数据。
-
-链接
-验证：检查代码是否符合虚拟机要求。
-准备：为类的静态变量赋初值。
-解析：将常量池里面的符号引用替换为直接引用。
-
-初始化给类的静态变量初始化值。">
-<meta name="twitter:image" content="http://ohwxydzxm.bkt.clouddn.com/类生命周期图.png">
+<meta name="twitter:title" content="JDBC连接数据库">
+<meta name="twitter:description" content="12345678910Class.forName(&amp;quot;com.mysql.jdbc.Driver&amp;quot;);String url = &amp;quot;jdbc:mysql://localhost/database&amp;quot;;String user = &amp;quot;username&amp;quot;;String password = &amp;quot;password&amp;quot;;Connectio">
   
     <link rel="alternative" href="/atom.xml" title="cho3en1" type="application/atom+xml">
   
@@ -179,41 +132,25 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JVM(Ⅴ)-类加载机制" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JDBC连接数据库" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JVM(Ⅴ)-类加载机制
+      JDBC连接数据库
     </h1>
   
 
-        <a href="/2016/12/13/JVM(Ⅴ)-类加载机制/" class="archive-article-date">
-  	<time datetime="2016-12-13T08:01:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-13</time>
+        <a href="/2017/01/01/JDBC连接数据库/" class="archive-article-date">
+  	<time datetime="2016-12-31T17:30:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-01</time>
 </a>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="类生命周期图"><a href="#类生命周期图" class="headerlink" title="类生命周期图"></a>类生命周期图</h2><p><img src="http://ohwxydzxm.bkt.clouddn.com/类生命周期图.png" alt=""></p>
-<h2 id="类加载过程"><a href="#类加载过程" class="headerlink" title="类加载过程"></a>类加载过程</h2><ol>
-<li>加载</li>
-<li>链接</li>
-<li>初始化</li>
-</ol>
-<h2 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h2><ol>
-<li>将二进制的类文件转化为虚拟机可执行的Java格式，并将类的相关静态数据存放到方法区。</li>
-<li>在堆上创建一个该类的类对象，作为接口访问该类的数据。</li>
-</ol>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><ol>
-<li>验证：检查代码是否符合虚拟机要求。</li>
-<li>准备：为类的静态变量赋初值。</li>
-<li>解析：将常量池里面的符号引用替换为直接引用。</li>
-</ol>
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>给类的静态变量初始化值。</p>
-
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Class.forName(&quot;com.mysql.jdbc.Driver&quot;);</div><div class="line">String url = &quot;jdbc:mysql://localhost/database&quot;;</div><div class="line">String user = &quot;username&quot;;</div><div class="line">String password = &quot;password&quot;;</div><div class="line">Connection conn = DriverManager.getConnection(url, user, password);</div><div class="line">String sql = &quot;SELECT * FROM table WHERE username=? AND password=?&quot;;</div><div class="line">pstmt.setString(1, admin);</div><div class="line">pstmt.setString(2, 000000);</div><div class="line">PreparedStatement pstmt = conn.prepareStatement(sql);</div><div class="line">ResultSet rs = pstmt.executeQuery();</div></pre></td></tr></table></figure>
       
 
       
@@ -223,7 +160,7 @@
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JDBC/">JDBC</a></li></ul>
 	</div>
 
       
@@ -276,7 +213,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/12/13/JVM(Ⅴ)-类加载机制/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/01/01/JDBC连接数据库/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -290,18 +227,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/12/22/Java常见容器汇总/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java常见容器汇总
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/12/12/JVM(Ⅳ)-垃圾回收机制/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JVM(Ⅳ)-垃圾回收机制</div>
+    <a href="/2016/12/25/GOF设计模式(Ⅰ)-单例模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">GOF设计模式(Ⅰ)-单例模式</div>
       <i class="icon-circle-right"></i>
     </a>
   
