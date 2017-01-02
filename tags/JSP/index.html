@@ -6,45 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JVM(Ⅱ)-GC前的对象死亡判定 | cho3en1</title>
+  <title>Tag: JSP | cho3en1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="判定对象不可用的方法
-引用计数算法
-根搜索算法
-
-引用计数算法对象每新增一个引用，该对象的计数器值加1。对象每减少一个引用，该对象的计数器值减1。任何时候计数器值为0，该对象不可用。
-缺点：无法解决对象死循环引用情况。
-根搜索算法一个对象没有任何引用链能到达GC Roots即为不可用。
-引用两种判定对象不可用的方法都涉及到引用。引用又分为四种：
-
-强引用：只要强引用还存在，垃圾回收器永远都不会对其">
-<meta property="og:type" content="article">
-<meta property="og:title" content="JVM(Ⅱ)-GC前的对象死亡判定">
-<meta property="og:url" content="http://yoursite.com/2016/12/09/JVM(Ⅱ)-GC前的对象死亡判定/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="cho3en1">
+<meta property="og:url" content="http://yoursite.com/tags/JSP/index.html">
 <meta property="og:site_name" content="cho3en1">
-<meta property="og:description" content="判定对象不可用的方法
-引用计数算法
-根搜索算法
-
-引用计数算法对象每新增一个引用，该对象的计数器值加1。对象每减少一个引用，该对象的计数器值减1。任何时候计数器值为0，该对象不可用。
-缺点：无法解决对象死循环引用情况。
-根搜索算法一个对象没有任何引用链能到达GC Roots即为不可用。
-引用两种判定对象不可用的方法都涉及到引用。引用又分为四种：
-
-强引用：只要强引用还存在，垃圾回收器永远都不会对其">
-<meta property="og:updated_time" content="2016-12-09T13:24:11.047Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JVM(Ⅱ)-GC前的对象死亡判定">
-<meta name="twitter:description" content="判定对象不可用的方法
-引用计数算法
-根搜索算法
-
-引用计数算法对象每新增一个引用，该对象的计数器值加1。对象每减少一个引用，该对象的计数器值减1。任何时候计数器值为0，该对象不可用。
-缺点：无法解决对象死循环引用情况。
-根搜索算法一个对象没有任何引用链能到达GC Roots即为不可用。
-引用两种判定对象不可用的方法都涉及到引用。引用又分为四种：
-
-强引用：只要强引用还存在，垃圾回收器永远都不会对其">
+<meta name="twitter:title" content="cho3en1">
   
     <link rel="alternative" href="/atom.xml" title="cho3en1" type="application/atom+xml">
   
@@ -159,139 +128,150 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JVM(Ⅱ)-GC前的对象死亡判定" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      JVM(Ⅱ)-GC前的对象死亡判定
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/01/02/JSP(Ⅳ)-隐式对象/" class="archive-article-date">
+  	<time datetime="2017-01-02T14:35:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-02</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/01/02/JSP(Ⅳ)-隐式对象/">JSP(Ⅳ)-隐式对象</a>
     </h1>
   
 
-        <a href="/2016/12/09/JVM(Ⅱ)-GC前的对象死亡判定/" class="archive-article-date">
-  	<time datetime="2016-12-09T13:17:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-09</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="判定对象不可用的方法"><a href="#判定对象不可用的方法" class="headerlink" title="判定对象不可用的方法"></a>判定对象不可用的方法</h2><ol>
-<li>引用计数算法</li>
-<li>根搜索算法</li>
-</ol>
-<h2 id="引用计数算法"><a href="#引用计数算法" class="headerlink" title="引用计数算法"></a>引用计数算法</h2><p>对象每新增一个引用，该对象的计数器值加1。<br>对象每减少一个引用，该对象的计数器值减1。<br>任何时候计数器值为0，该对象不可用。</p>
-<p>缺点：无法解决对象死循环引用情况。</p>
-<h2 id="根搜索算法"><a href="#根搜索算法" class="headerlink" title="根搜索算法"></a>根搜索算法</h2><p>一个对象没有任何引用链能到达GC Roots即为不可用。</p>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>两种判定对象不可用的方法都涉及到引用。引用又分为四种：</p>
-<ol>
-<li>强引用：只要强引用还存在，垃圾回收器永远都不会对其引用对象回收。</li>
-<li>软引用：还有用，但不是必要的引用。内存溢出前将其放入可回收队列，进行二次回收。</li>
-<li>弱引用：只能存活到下次垃圾回收前。</li>
-<li>虚引用：仅仅起到接受系统回收对象的通知。</li>
-</ol>
-<h2 id="判定不可用对象死亡的条件"><a href="#判定不可用对象死亡的条件" class="headerlink" title="判定不可用对象死亡的条件"></a>判定不可用对象死亡的条件</h2><p><strong>第一次标记：</strong>不可用对象覆盖了finalize()方法且没被虚拟机调用过，则虚拟机触发finalize()方法，由于是低优先级线程，所以并不一定执行finalize()，仅仅只是触发。<br><strong>第二次标记：</strong>弱第一次标记中的对象执行了finalize()并且新增了引用，则该对象移出“即将回收”的集合。反之对象死亡回收。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSP/">JSP</a></li></ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/12/09/JVM(Ⅱ)-GC前的对象死亡判定/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/01/02/JSP(Ⅲ)-动作元素/" class="archive-article-date">
+  	<time datetime="2017-01-02T14:34:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-02</time>
+</a>
+        </div>
+    	 
   
-    <a href="/2016/12/11/JVM(Ⅲ)-垃圾回收算法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JVM(Ⅲ)-垃圾回收算法
-        
-      </div>
-    </a>
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/01/02/JSP(Ⅲ)-动作元素/">JSP(Ⅲ)-动作元素</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSP/">JSP</a></li></ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/01/02/JSP(Ⅱ)-编译指令/" class="archive-article-date">
+  	<time datetime="2017-01-02T14:33:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-02</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/01/02/JSP(Ⅱ)-编译指令/">JSP(Ⅱ)-编译指令</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSP/">JSP</a></li></ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/01/02/JSP(Ⅰ)-基本语法/" class="archive-article-date">
+  	<time datetime="2017-01-02T14:31:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-02</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/01/02/JSP(Ⅰ)-基本语法/">JSP(Ⅰ)-基本语法</a>
+    </h1>
+  
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSP/">JSP</a></li></ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
   
   
-    <a href="/2016/12/09/JVM(Ⅰ)-内存管理机制/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JVM(Ⅰ)-内存管理机制</div>
-      <i class="icon-circle-right"></i>
-    </a>
+    </div></section>
   
-</nav>
 
-
-
-
-
-
-
+    
 
 
           </div>
@@ -312,9 +292,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
